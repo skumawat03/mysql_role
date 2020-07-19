@@ -1,0 +1,28 @@
+---
+
+- name: Creating default user
+  mysql_user:
+          name: "{{ mysql_user_name }}"
+          host: 'localhost'
+          password: "{{ mysql_user_password }}"
+          priv: '*.*:ALL,GRANT'
+          state: present
+
+- name: Copy user-my.cnf file with password credentials.
+  template:
+    src: "user-my.cnf.j2"
+    dest: "{{ mysql_user_home }}/.my.cnf"
+    owner: "{{ mysql_user_name }}"
+    mode: 0600
+          
+- name: Removes all anonymous user accounts
+  mysql_user:
+          name: ''
+          host: localhost
+          state: absent
+          
+- name: Remve test databases
+  mysql_db:
+          name: 'test'
+          state: absent
+

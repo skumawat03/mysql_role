@@ -1,0 +1,25 @@
+---
+
+- name: Update apt cache
+  apt:
+          update_cache: yes
+          
+- name: Checking for python
+  set_fact:
+          python_pkg: "{% if 'python3' in ansible_python_interpreter|default('') %}python3-mysqldb{% else %}python-mysqldb{% endif %}"
+          
+- name: Installing python libraries
+  apt:
+          name: "{{python_pkg}}"
+          state: present
+
+- name: Installing MySql
+  apt:
+          name: "{{mysql_package}}"
+          state: present
+          
+- name: Stopping mysql
+  sevice:
+          name: "{{mysql_daemon}}"
+          state: stopped
+

@@ -1,0 +1,11 @@
+---
+- name: Adding Monitoring user
+  mysql_users:
+          name: monitoring
+          host: localhost
+          password: Password1
+          priv: '*.*:SELECT'
+          state: present
+          encrypted: no
+          append_privs: no
+

@@ -1,0 +1,4 @@
+---
+- name: redhat variables
+  set_fact:
+          mysql_redhat_ver: "{{ ansible_distribution_version }}"
