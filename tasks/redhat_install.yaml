@@ -1,11 +1,11 @@
 ---
 - name: Install MySql repo
   yum:
-          name: "https://dev.mysql.com/get/mysql80-community-release-el{{ mysql_redhat_ver }}-1.noarch.rpm"
+          name: "https://dev.mysql.com/get/mysql57-community-release-el{{ mysql_redhat_ver }}-11.noarch.rpm"
           state: present
 
 - name: Installing MySql
   yum:
-          name: ["mysql-server", "MySQL-python", "perl-DBD-MySQL"]
+          name: ["mysql", "mysql-server", "MySQL-python", "perl-DBD-MySQL"]
           state: present
 

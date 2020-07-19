@@ -1,7 +1,7 @@
 ---
 # tasks file for mysql_role
 - name: Including dynamic variables
-  include_tasks: variable.yaml
+  include_tasks: variables.yaml
 
 - name: Installing on redhat
   include_tasks: redhat_install.yaml

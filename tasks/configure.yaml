@@ -1,7 +1,7 @@
 ---
 
 - name: copy my.cnf
-  templete:
+  template:
           src: my.cnf.j2
           dest: "{{ mysql_config_file }}"
           owner: root
